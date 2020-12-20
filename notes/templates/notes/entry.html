@@ -1,0 +1,37 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}" />
+
+<h1>Note with id {{id}}</h1>
+<a href="/notes/">Top level</a>
+{% if e %}
+  <ul class="content_list">
+    <li>
+      <form id="delete_form" method="post" action="/notes/entry/{{id}}">
+	{% csrf_token %}
+	<input type="hidden" name="action" value="delete" \>
+	<input type="button" value="Delete note"
+	     onclick='document.getElementById("delete_form").submit()' />
+      </form>
+      <div class"entry">
+	<div class="message_heading">
+	<span class="left_side">{{e.subject }}
+	<span class="right_side">{{e.pub_date}}</span>
+	</div>
+	<div class="content">
+	  {{e.content}}
+	</div>
+	{% if e.tag.all %}
+          <div class="tags">
+            {% for tag in e.tag.all %}
+              <a href="/notes/tag/{{tag.tag}}">{{ tag.tag }}</a>
+	    {% endfor %}
+	  </div>
+        {% endif %}
+      </div>
+    </li>
+  </ul>
+{% else %}
+  <p>Note not available.</p>
+{% endif %}
+  

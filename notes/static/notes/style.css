@@ -1,0 +1,54 @@
+ul.content_list {
+    list-style-type: none;
+}
+
+ul.content_list li {
+    margin: 15px;
+}
+
+div.entry {
+    margin: 20px;
+    border-collapse: collapse;
+#    display: table;
+}
+
+div.tags, div.message_heading {
+    border: 1px black solid;
+    background-color: lightblue;
+    padding-left: 3px;
+    padding-right: 3px;
+    //text-align: right;
+}
+
+div.tags {
+    text-align: right;
+}
+
+div.tags a {
+    text-align: right;
+    text-decoration: none;
+}
+
+a.tag {
+    text-decoration: none;
+}
+
+div.tags {
+    border-top: 0;
+}
+
+div.message_heading {
+    border-bottom: 0;
+}
+
+div.content {
+    border: 1px black solid;
+    background-color: azure;
+    padding-left: 3px;
+    border-collapse: collapse;
+#    display: table-cell;
+}
+
+span.right_side {
+    float: right;
+}

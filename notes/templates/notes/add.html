@@ -1,0 +1,48 @@
+<h1>Add new entry</h1>
+<a href="/notes/">Top level</a>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/notes/add2" method="post">
+{% csrf_token %}
+
+
+<input type="submit" value="Add" />
+<input type="text" name="subject" id="add_subject" value="dummy" />
+<label for="subject">Subject</label><br />
+
+<br/>
+
+<textarea name="content" rows="10" cols="30"></textarea>
+<label for="content">Content</label><br />
+
+<br/>
+<div id="tags">
+{% for tag in tags %}
+<div>
+<input type="checkbox" name="tag" id="add_tag_{{tag}}" value="{{tag}}" />
+<label for="add_tag_{{tag}}">{{tag}}</label>
+</div>
+<br />
+{% endfor %}
+</div>
+
+<div id="create_new_tag">
+  <input type="text" id="new_tag"/>
+  <input type="button" value="Create new tag" onclick="create_tag(this)" />
+</div>
+
+</form>
+<script>
+  function create_tag(e) {
+    value=document.getElementById("new_tag").value;
+    if (value=="")
+      return;
+    divs=document.getElementById("tags")
+    d=document.createElement("div")
+    d.innerHTML = '<input type="checkbox" name="tag" id="add_tag_'+value+'" value="'+value+'" /><label for="add_tag_'+value+'">'+value+'</label>';
+    divs.appendChild(d)
+    document.getElementById("new_tag").value = "";
+    
+  }
+  
+  </script>

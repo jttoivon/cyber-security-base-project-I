@@ -1,0 +1,33 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}" />
+
+<h1>List of all notes with tag {{tag}}</h1>
+<a href="/notes/">Top level</a>
+{% if entries %}
+  <ul class="content_list">
+    {% for e in entries %}
+    <li>
+      <div class"entry">
+	<div class="message_heading">
+	<span class="left_side">{{e.subject }}
+	<span class="right_side">{{e.pub_date}}</span>
+	</div>
+	<div class="content">
+	  {{e.content}}
+	</div>
+	{% if e.tag.all %}
+        <div class="tags">
+	  Tags:
+            {% for tag in e.tag.all %}
+              <a href="/notes/tag/{{tag.tag}}">{{ tag.tag }}</a>
+	    {% endfor %}
+	  </div>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No notes available.</p>
+{% endif %}
