@@ -1,4 +1,5 @@
 # Define signal handlers for the login, logout, and failed login events
+# https://stackoverflow.com/questions/37618473/how-can-i-log-both-successful-and-failed-login-and-logout-attempts-in-django/37620866#37620866
 
 import logging
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed

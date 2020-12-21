@@ -36,6 +36,7 @@ Tags:
 	<span class="right_side">{{e.pub_date}}</span>
 	</div>
 	<div class="content">
+	  <!-- https://docs.djangoproject.com/en/3.1/ref/templates/language/#automatic-html-escaping -->
 	  {% autoescape off %}
 	  {{e.content}}
 	  {% endautoescape %}
