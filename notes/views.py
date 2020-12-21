@@ -19,7 +19,6 @@ log = logging.getLogger("notes")
 
 @login_required
 def index(request):
-    log.info("Creating the index page")
     entries = Entry.objects.filter(owner=request.user)
     tags = Tag.objects.all()
     template = loader.get_template('notes/index.html')
@@ -46,7 +45,8 @@ def entry(request, id):
         if action == "delete":
             e=Entry.objects.get(pk=id)
             e.delete()
-            return HttpResponseRedirect("/notes/")
+            #log.info("Deleting an entry")
+            return HttpResponseRedirect("/")
     except (KeyError):
         pass
     
