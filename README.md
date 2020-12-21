@@ -4,6 +4,7 @@ The notes app is implemented using the Django framework for creating a web appli
 
 To start using the notes app, first issue the following command
 to create necessary databases:
+```python manage.py makemigrations notes``` and 
 ```python manage.py migrate```
 Then create a superuser account with command
 ```python manage.py createsuperuser --username admin```
