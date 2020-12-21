@@ -18,9 +18,9 @@ from django.urls import include, path
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
-    path('notes/login/', LoginView.as_view(template_name='notes/login.html')),
-    path('notes/logout/', LogoutView.as_view(next_page='notes')),
+    path('login/', LoginView.as_view(template_name='notes/login.html')),
+    path('logout/', LogoutView.as_view(next_page='/')),
     #path('polls/', include('polls.urls')),
-    path('notes/', include('notes.urls')),
+    path('', include('notes.urls')),
     path('admin/', admin.site.urls),
 ]

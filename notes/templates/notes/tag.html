@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}" />
 
 <h1>List of all notes with tag {{tag}}</h1>
-<a href="/notes/">Top level</a>
+<a href="{% url 'notes:index' %}">Top level</a>
 {% if entries %}
   <ul class="content_list">
     {% for e in entries %}
@@ -20,7 +20,7 @@
         <div class="tags">
 	  Tags:
             {% for tag in e.tag.all %}
-              <a href="/notes/tag/{{tag.tag}}">{{ tag.tag }}</a>
+              <a href="{% url 'notes:tag' tag.tag %}">{{ tag.tag }}</a>
 	    {% endfor %}
 	  </div>
         {% endif %}

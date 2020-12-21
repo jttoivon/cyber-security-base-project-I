@@ -133,8 +133,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-LOGIN_URL = '/notes/login/'
-LOGIN_REDIRECT_URL = '/notes'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 SESSION_COOKIE_SAMESITE = None
 
 # Database

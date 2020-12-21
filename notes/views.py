@@ -1,6 +1,6 @@
 # Create your views here.
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
@@ -81,7 +81,7 @@ def add2(request):
         tags = Tag.objects.all()
         return render(request, 'notes/add.html', {
             'tags' : tags,
-            'error_message': "You did not provide both subject and content." + __name__ + "x",
+            'error_message': "You did not provide both subject and content.",
         })
     else:
         # Check the input
@@ -89,7 +89,7 @@ def add2(request):
             tags = Tag.objects.all()
             return render(request, 'notes/add.html', {
                 'tags' : tags,
-                'error_message': "You did not provide both subject and content." + __name__ + "x",
+                'error_message': "You did not provide both subject and content.",
             }) 
         tags = request.POST.getlist('tag')
 
@@ -105,4 +105,5 @@ def add2(request):
                     e.tag.create(tag=tag)
         e.save()
 
-        return HttpResponseRedirect("/notes/entry/%i" % e.id)
+        #return HttpResponseRedirect("/notes/entry/%i" % e.id)
+        return redirect('notes:entry', id=e.id)

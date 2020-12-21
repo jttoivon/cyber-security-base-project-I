@@ -17,12 +17,12 @@
             <input type="submit" value="Logout"/>
         </form>
 	
-<a href="/notes/add">Add new message</a>
+<a href="{% url 'notes:add' %}">Add new message</a>
 
 {% if tags %}
 Tags:
 {% for t in tags %}
-   <a class="tag" href="/notes/tag/{{t.tag}}">{{t.tag}}</a>
+   <a class="tag" href="{% url 'notes:tag' t.tag %}">{{t.tag}}</a>
 {% endfor %}
 {% endif %}
 
@@ -32,7 +32,7 @@ Tags:
     <li>
       <div class"entry">
 	<div class="message_heading">
-	<span class="left_side"><a href="/notes/entry/{{e.id}}">{{e.subject }}</a></span>
+	<span class="left_side"><a href="{% url 'notes:entry' e.id%}">{{e.subject }}</a></span>
 	<span class="right_side">{{e.pub_date}}</span>
 	</div>
 	<div class="content">
@@ -44,7 +44,7 @@ Tags:
 	{% if e.tag.all %}
           <div class="tags">
             {% for tag in e.tag.all %}
-              <a href="/notes/tag/{{tag.tag}}">{{ tag.tag }}</a>
+              <a href="{% url 'notes:tag' tag.tag %}">{{ tag.tag }}</a>
 	    {% endfor %}
 	  </div>
         {% endif %}

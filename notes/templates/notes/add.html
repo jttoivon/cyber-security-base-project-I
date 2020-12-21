@@ -2,7 +2,7 @@
 <a href="/notes/">Top level</a>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="/notes/add2" method="post">
+<form action="{% url 'notes:add2' %}" method="post">
 {% csrf_token %}
 
 

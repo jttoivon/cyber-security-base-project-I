@@ -3,11 +3,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}" />
 
 <h1>Note with id {{id}}</h1>
-<a href="/notes/">Top level</a>
+<a href="{% url 'notes:index' %}">Top level</a>
 {% if e %}
   <ul class="content_list">
     <li>
-      <form id="delete_form" method="post" action="/notes/entry/{{id}}">
+      <form id="delete_form" method="post" action="{% url 'notes:entry' id %}">
 	{% csrf_token %}
 	<input type="hidden" name="action" value="delete" \>
 	<input type="button" value="Delete note"
@@ -24,7 +24,7 @@
 	{% if e.tag.all %}
           <div class="tags">
             {% for tag in e.tag.all %}
-              <a href="/notes/tag/{{tag.tag}}">{{ tag.tag }}</a>
+              <a href="{% url 'notes:tag' tag.tag %}">{{ tag.tag }}</a>
 	    {% endfor %}
 	  </div>
         {% endif %}
